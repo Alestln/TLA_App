@@ -3,7 +3,8 @@ using System;
 namespace TLA_App;
 
 /// <summary>
-/// Лекция 6: Инварианты безопасности, алгоритмы взаимного исключения и Deadlock.
+/// Лекция 7: Верификация свойств живучести (Liveness), справедливость (WF / SF),
+/// скрытые блокировки (stuttering, livelock) и голодание процессов (starvation).
 /// Точка входа для демонстраций в C#.
 /// </summary>
 public class Program
@@ -12,18 +13,10 @@ public class Program
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-        // Поддержка запуска:
-        // dotnet run                  -> интерактивное меню
-        // dotnet run -- 3             -> запуск пункта 3 напрямую
-        // dotnet run -- l6 3          -> совместимость с вызовом через префикс
-        string? choice = null;
-        if (args.Length > 0)
-        {
-            choice = args[0].Equals("l6", StringComparison.OrdinalIgnoreCase)
-                ? (args.Length > 1 ? args[1] : null)
-                : args[0];
-        }
+        // dotnet run -c Release          -> интерактивное меню
+        // dotnet run -c Release -- 3     -> запуск пункта 3 напрямую
+        string? choice = args.Length > 0 ? args[0] : null;
 
-        Lecture6.Lecture6Menu.Run(choice);
+        Lecture7.Lecture7Menu.Run(choice);
     }
 }
